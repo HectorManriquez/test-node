@@ -26,10 +26,13 @@ router.get('/test', (req, res, next) => {
 });
 
 router.post('/test', (req, res, next) => {
-    console.log(req);
+    // console.log(req);
+    console.log(req.body);
+    console.log(req.headers);
     res.status(200).send({
-        'status': 200,
-        'message': 'success'
+        status: 200,
+        message: 'success',
+        challenge: req.body.challenge
     })
 });
 
