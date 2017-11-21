@@ -29,7 +29,9 @@ router.post('/test', (req, res, next) => {
     // console.log(req);
     console.log(req.body);
     console.log(req.headers);
-    res.status(200).send(req.body.pingData);
+    res.status(200).send({
+        pingData: req.body.pingData
+    });
 });
 
 module.exports = router;
