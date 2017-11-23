@@ -1,8 +1,9 @@
 const express = require('express');
 const httpSignature = require('http-signature');
-const router = express.Router();
+const utf8 = require('utf8');
 
-const publicKey = process.env.ST_PUBLIC_KEY;
+const router = express.Router();
+const publicKey = utf8.encode(process.env.ST_PUBLIC_KEY);
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -39,6 +40,7 @@ function signatureIsVerified(req) {
         console.log('THIS IS THE PARSED DATA');
         console.log(parsed);
         if (!httpSignature.verifySignature(parsed, publicKey)) {
+            console.log('IS THIS EVEN HITTTT');
             console.log('forbidden - failed verifySignature');
             return false;
         }
