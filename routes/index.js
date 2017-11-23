@@ -36,11 +36,14 @@ router.post('/smartthings', (req, res, next) => {
 function signatureIsVerified(req) {
     try {
         let parsed = httpSignature.parseRequest(req);
+        console.log('THIS IS THE PARSED DATA');
+        console.log(parsed);
         if (!httpSignature.verifySignature(parsed, publicKey)) {
             console.log('forbidden - failed verifySignature');
             return false;
         }
     } catch (error) {
+        console.log('WE HAVE THROWN AN ERRORRR!');
         console.error(error);
         return false;
     }
