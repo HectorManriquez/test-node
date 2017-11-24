@@ -27,7 +27,8 @@ router.post('/smartthings', (req, res, next) => {
     console.log(req.body);
     console.log(req.headers);
 
-    if (req.body && req.body.lifecycle === 'PING' || signatureIsVerified(req)) {
+    //if (req.body && req.body.lifecycle === 'PING' || signatureIsVerified(req)) {
+    if (req.body && req.body.lifecycle === 'PING') {
         handleRequest(req, res);
     } else {
         res.status(401).send('Forbidden');
