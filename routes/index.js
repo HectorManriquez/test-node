@@ -97,6 +97,8 @@ function handleRequest(req, res) {
         };
 
         res.status(200).json(response);
+        console.log('Does this response get triggered!');
+        console.log(res);
     }
 }
 
