@@ -88,7 +88,7 @@ function handleRequest(req, res) {
                         "r:locations:*",
                         // "w:locations:*",
                         // "r:apps:*",
-                        "w:apps:*",
+                        // "w:apps:*",
                         // "i:deviceprofiles",
                         // "w:deviceprofiles",
                         "r:schedules",
