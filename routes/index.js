@@ -1,9 +1,9 @@
 const express = require('express');
 const httpSignature = require('http-signature');
-const utf8 = require('utf8');
+// const utf8 = require('utf8');
 
 const router = express.Router();
-const publicKey = utf8.encode(process.env.ST_PUBLIC_KEY);
+// const publicKey = utf8.encode(process.env.ST_PUBLIC_KEY);
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -104,7 +104,7 @@ function handleRequest(req, res) {
 
     if (lifecycle === 'CONFIGURATION' && phase === 'PAGE') {
         console.log(`${phase} phase triggered`);
-        console.log(body.configurationData.config.app);
+        console.log(req.body.configurationData.config.app);
 
         const response = {
             configurationData: {
