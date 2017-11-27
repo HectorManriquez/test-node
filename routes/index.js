@@ -56,18 +56,20 @@ function signatureIsVerified(req) {
 function handleRequest(req, res) {
     // handle all lifecycles from SmartThings
     const lifecycle = req.body.lifecycle;
-    console.log('LIFECYCLE SENT INNNN!');
-    console.log(lifecycle);
+    const phase = req.body.configurationData.phase;
+
+    console.log('LIFECYCLE PHASE!');
+    console.log(lifecycle, phase);
 
     if (lifecycle === 'PING') {
-        console.log(`${lifecycle} lifecycle triggered`);
+        console.log(`${phase} phase triggered`);
         res.status(200).send({
             pingData: req.body.pingData
         });
     }
 
-    if (lifecycle === 'CONFIGURATION') {
-        console.log(`${lifecycle} lifecycle triggered`);
+    if (lifecycle === 'CONFIGURATION' && phase === 'INITIALIZE') {
+        console.log(`${phase} phase triggered`);
 
         const response = {
             configurationData: {
@@ -76,15 +78,50 @@ function handleRequest(req, res) {
                     description: "Yonomi integration device permissions.",
                     id: "app",
                     permissions: [
-                        "l:devices"
+                        "l:devices",
+                        "r:devices:*",
+                        "w:devices:*",
+                        "x:devices:*",
+                        "l:installedapps",
+                        "r:installedapps:*",
+                        "w:installedapps:*",
+                        "r:locations:*",
+                        "w:locations:*",
+                        "r:apps:*",
+                        "w:apps:*",
+                        "r:deviceprofiles",
+                        "w:deviceprofiles",
+                        "r:schedules",
+                        "w:schedules"
+                    ],
+                    firstPAgeId: "1"
+                }
+            }
+        };
+
+        res.status(200).json(response);
+    }
+
+    if (lifecycle === 'CONFIGURATION' && phase === 'PAGE') {
+        console.log(`${phase} phase triggered`);
+        console.log(body.configurationData.config.app);
+
+        const response = {
+            configurationData: {
+                page: {
+                    pageId: "1",
+                    name: "Yonomi integration device permissions.",
+                    nextPageId: null,
+                    previousPageId: null,
+                    complete: true,
+                    sections: [
+
                     ]
                 }
             }
         };
 
         res.status(200).json(response);
-        // console.log('Does this response get triggered!');
-        // console.log(res);
     }
 }
 
