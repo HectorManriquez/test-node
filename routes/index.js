@@ -56,6 +56,8 @@ function signatureIsVerified(req) {
 function handleRequest(req, res) {
     // handle all lifecycles from SmartThings
     const lifecycle = req.body.lifecycle;
+    console.log('LIFECYCLE SENT INNNN!');
+    console.log(lifecycle);
 
     if (lifecycle === 'PING') {
         console.log(`${lifecycle} lifecycle triggered`);
