@@ -69,12 +69,12 @@ function handleRequest(req, res) {
     if (lifecycle === 'CONFIGURATION') {
         console.log(`${lifecycle} lifecycle triggered`);
 
-        res.status(200).send({
+        const response = {
             configurationData: {
                 initialize: {
                     name: "Yonomi",
                     description: "Yonomi integration device permissions.",
-                    id: "yonomiApp",
+                    id: "app",
                     permissions: [
                         "l:devices",
                         "r:devices:*",
@@ -94,7 +94,9 @@ function handleRequest(req, res) {
                     ]
                 }
             }
-        });
+        };
+
+        res.status(200).json(response);
     }
 }
 
