@@ -78,21 +78,21 @@ function handleRequest(req, res) {
                     description: "Yonomi integration device permissions.",
                     id: "app",
                     permissions: [
-                        "l:devices",
-                        "r:devices:*",
-                        "w:devices:*",
-                        "x:devices:*",
-                        "l:installedapps",
-                        "r:installedapps:*",
-                        "w:installedapps:*",
-                        "r:locations:*",
-                        "w:locations:*",
-                        "r:apps:*",
-                        "w:apps:*",
-                        "r:deviceprofiles",
-                        "w:deviceprofiles",
-                        "r:schedules",
-                        "w:schedules"
+                        "l:devices"
+                        // "r:devices:*",
+                        // "w:devices:*",
+                        // "x:devices:*",
+                        // "l:installedapps",
+                        // "r:installedapps:*",
+                        // "w:installedapps:*",
+                        // "r:locations:*",
+                        // "w:locations:*",
+                        // "r:apps:*",
+                        // "w:apps:*",
+                        // "r:deviceprofiles",
+                        // "w:deviceprofiles",
+                        // "r:schedules",
+                        // "w:schedules"
                     ],
                     firstPAgeId: "1"
                 }
