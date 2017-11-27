@@ -87,8 +87,8 @@ function handleRequest(req, res) {
                         // "r:locations:*",
                         // "w:apps:*",
                         "i:deviceprofiles",
-                        "r:schedules",
-                        "w:schedules",
+                        // "r:schedules",
+                        // "w:schedules",
                     ],
                     firstPAgeId: "1"
                 }
