@@ -136,6 +136,16 @@ function handleRequest(req, res) {
 
         res.status(200).json(response);
     }
+
+    if (lifecycle === 'UNINSTALL') {
+        console.log(`${lifecycle} lifecycle triggered`);
+
+        const response = {
+            uninstallData: {},
+        };
+
+        res.status(200).json(response);
+    }
 }
 
 module.exports = router;
