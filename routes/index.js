@@ -81,7 +81,7 @@ function handleRequest(req, res) {
                         "r:devices:*",
                         "w:devices:*",
                         "x:devices:*",
-                        "r:locations:*",
+                        // "r:locations:*",
                         "l:installedapps",
                         // "r:installedapps:*",
                         // "w:installedapps:*",
