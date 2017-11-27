@@ -134,6 +134,16 @@ function handleRequest(req, res) {
         res.status(200).json(response);
     }
 
+    if (lifecycle === 'UPDATE') {
+        console.log(`${lifecycle} lifecycle triggered`);
+
+        const response = {
+            updateData: {},
+        };
+
+        res.status(200).json(response);
+    }
+
     if (lifecycle === 'UNINSTALL') {
         console.log(`${lifecycle} lifecycle triggered`);
 
