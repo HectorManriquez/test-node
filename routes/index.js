@@ -56,20 +56,20 @@ function signatureIsVerified(req) {
 function handleRequest(req, res) {
     // handle all lifecycles from SmartThings
     const lifecycle = req.body.lifecycle;
-    const phase = req.body.configurationData.phase;
 
-    console.log('LIFECYCLE PHASE!');
-    console.log(lifecycle, phase);
 
     if (lifecycle === 'PING') {
-        console.log(`${phase} phase triggered`);
+        console.log(`${lifecycle} lifecycle triggered`);
         res.status(200).send({
             pingData: req.body.pingData
         });
     }
 
     if (lifecycle === 'CONFIGURATION' && phase === 'INITIALIZE') {
-        console.log(`${phase} phase triggered`);
+        const phase = req.body.configurationData.phase;
+
+        console.log('LIFECYCLE PHASE!');
+        console.log(lifecycle, phase);
 
         const response = {
             configurationData: {
@@ -78,21 +78,22 @@ function handleRequest(req, res) {
                     description: "Yonomi integration device permissions.",
                     id: "app",
                     permissions: [
-                        "l:devices"
-                        // "r:devices:*",
-                        // "w:devices:*",
-                        // "x:devices:*",
-                        // "l:installedapps",
-                        // "r:installedapps:*",
-                        // "w:installedapps:*",
-                        // "r:locations:*",
-                        // "w:locations:*",
-                        // "r:apps:*",
-                        // "w:apps:*",
-                        // "r:deviceprofiles",
-                        // "w:deviceprofiles",
-                        // "r:schedules",
-                        // "w:schedules"
+                        "l:devices",
+                        "r:devices:*",
+                        "w:devices:*",
+                        "x:devices:*",
+                        "l:installedapps",
+                        "r:installedapps:*",
+                        "w:installedapps:*",
+                        "l:locations",
+                        "r:locations:*",
+                        "w:locations:*",
+                        "r:apps:*",
+                        "w:apps:*",
+                        "r:deviceprofiles",
+                        "w:deviceprofiles",
+                        "r:schedules",
+                        "w:schedules",
                     ],
                     firstPAgeId: "1"
                 }
@@ -103,8 +104,10 @@ function handleRequest(req, res) {
     }
 
     if (lifecycle === 'CONFIGURATION' && phase === 'PAGE') {
-        console.log(`${phase} phase triggered`);
-        console.log(req.body.configurationData.config.app);
+        const phase = req.body.configurationData.phase;
+
+        console.log('LIFECYCLE PHASE!');
+        console.log(lifecycle, phase);
 
         const response = {
             configurationData: {
@@ -119,6 +122,16 @@ function handleRequest(req, res) {
                     ]
                 }
             }
+        };
+
+        res.status(200).json(response);
+    }
+
+    if (lifecycle === 'INSTALL') {
+        console.log(`${lifecycle} lifecycle triggered`);
+
+        const response = {
+            installData: {},
         };
 
         res.status(200).json(response);
