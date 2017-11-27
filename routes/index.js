@@ -56,6 +56,7 @@ function signatureIsVerified(req) {
 function handleRequest(req, res) {
     // handle all lifecycles from SmartThings
     const lifecycle = req.body.lifecycle;
+    const phase = req.body.configurationData ? req.body.configurationData.phase : null;
 
 
     if (lifecycle === 'PING') {
@@ -66,8 +67,6 @@ function handleRequest(req, res) {
     }
 
     if (lifecycle === 'CONFIGURATION' && phase === 'INITIALIZE') {
-        const phase = req.body.configurationData.phase;
-
         console.log('LIFECYCLE PHASE!');
         console.log(lifecycle, phase);
 
@@ -104,8 +103,6 @@ function handleRequest(req, res) {
     }
 
     if (lifecycle === 'CONFIGURATION' && phase === 'PAGE') {
-        const phase = req.body.configurationData.phase;
-
         console.log('LIFECYCLE PHASE!');
         console.log(lifecycle, phase);
 
