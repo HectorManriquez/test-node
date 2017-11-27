@@ -91,14 +91,15 @@ function handleRequest(req, res) {
                         "w:deviceprofiles",
                         "r:schedules",
                         "w:schedules"
-                    ]
+                    ],
+                    firstPAgeId: "0"
                 }
             }
         };
 
         res.status(200).json(response);
-        console.log('Does this response get triggered!');
-        console.log(res);
+        // console.log('Does this response get triggered!');
+        // console.log(res);
     }
 }
 
