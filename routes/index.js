@@ -84,11 +84,11 @@ function handleRequest(req, res) {
                         "l:installedapps",
                         // "r:installedapps:*",
                         // "w:installedapps:*",
-                        "r:locations:*",
+                        // "r:locations:*",
                         // "w:apps:*",
-                        // "i:deviceprofiles",
-                        // "r:schedules",
-                        // "w:schedules",
+                        "i:deviceprofiles",
+                        "r:schedules",
+                        "w:schedules",
                     ],
                     firstPAgeId: "1"
                 }
