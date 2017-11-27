@@ -70,26 +70,30 @@ function handleRequest(req, res) {
         console.log(`${lifecycle} lifecycle triggered`);
 
         res.status(200).send({
-            "name": "Yonomi",
-            "description": "Yonomi integration device permissions.",
-            "id": "app",
-            "permissions": [
-                "l:devices",
-                "r:devices:*",
-                "w:devices:*",
-                "x:devices:*",
-                "l:installedapps",
-                "r:installedapps:*",
-                "w:installedapps:*",
-                "r:locations:*",
-                "w:locations:*",
-                "r:apps:*",
-                "w:apps:*",
-                "r:deviceprofiles",
-                "w:deviceprofiles",
-                "r:schedules",
-                "w:schedules"
-            ]
+            configurationData: {
+                initialize: {
+                    name: "Yonomi",
+                    description: "Yonomi integration device permissions.",
+                    id: "yonomiApp",
+                    permissions: [
+                        "l:devices",
+                        "r:devices:*",
+                        "w:devices:*",
+                        "x:devices:*",
+                        "l:installedapps",
+                        "r:installedapps:*",
+                        "w:installedapps:*",
+                        "r:locations:*",
+                        "w:locations:*",
+                        "r:apps:*",
+                        "w:apps:*",
+                        "r:deviceprofiles",
+                        "w:deviceprofiles",
+                        "r:schedules",
+                        "w:schedules"
+                    ]
+                }
+            }
         });
     }
 }
