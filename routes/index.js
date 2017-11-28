@@ -4,6 +4,9 @@ const httpSignature = require('http-signature');
 
 const router = express.Router();
 // const publicKey = utf8.encode(process.env.ST_PUBLIC_KEY);
+const publicKey = process.env.ST_PUBLIC_KEY;
+const publicKeyFinal = JSON.parse( JSON.stringify(publicKey));
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -30,8 +33,8 @@ router.post('/smartthings', (req, res, next) => {
     console.log('BODYYYYYYYYYYY');
     console.log(req.body);
 
-    //if (req.body && req.body.lifecycle === 'PING' || signatureIsVerified(req)) {
-    if (req.body && req.body.lifecycle === 'PING' || true) {
+    if (req.body && req.body.lifecycle === 'PING' || signatureIsVerified(req)) {
+    // if (req.body && req.body.lifecycle === 'PING' || true) {
         handleRequest(req, res);
     } else {
         res.status(401).send('Forbidden');
@@ -43,7 +46,7 @@ function signatureIsVerified(req) {
         let parsed = httpSignature.parseRequest(req);
         console.log('THIS IS THE PARSED DATA');
         console.log(parsed);
-        if (!httpSignature.verifySignature(parsed, publicKey)) {
+        if (!httpSignature.verifySignature(parsed, publicKeyFinal)) {
             console.log('IS THIS EVEN HITTTT');
             console.log('forbidden - failed verifySignature');
             return false;
