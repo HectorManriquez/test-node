@@ -30,9 +30,6 @@ router.post('/smartthings', (req, res, next) => {
     console.log('BODYYYYYYYYYYY');
     console.log(req.body);
 
-    console.log('CONFIGGGGG DATAAA');
-    req.body.configurationData && console.log(req.body.configurationData.config);
-
     //if (req.body && req.body.lifecycle === 'PING' || signatureIsVerified(req)) {
     if (req.body && req.body.lifecycle === 'PING' || true) {
         handleRequest(req, res);
@@ -74,6 +71,10 @@ function handleRequest(req, res) {
     if (lifecycle === 'CONFIGURATION' && phase === 'INITIALIZE') {
         console.log('LIFECYCLE PHASE!');
         console.log(lifecycle, phase);
+
+        console.log('CONFIGGGGG DATAAA');
+        req.body.configurationData && console.log(req.body.configurationData.config);
+
 
         const response = {
             configurationData: {
@@ -137,6 +138,13 @@ function handleRequest(req, res) {
 
     if (lifecycle === 'UPDATE') {
         console.log(`${lifecycle} lifecycle triggered`);
+
+        console.log('UPDATE CONFIGGGGG DATAAA');
+        console.log(req.body.updateData.installedApp.config);
+
+        console.log('UPDATE PERMISSIONSSSS');
+        console.log(req.body.updateData.installedApp.permissions);
+
 
         const response = {
             updateData: {},
