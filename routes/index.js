@@ -24,8 +24,9 @@ router.get('/smartthings', (req, res, next) => {
 });
 
 router.post('/smartthings', (req, res, next) => {
-    console.log(req.body);
     console.log(req.headers);
+    console.log(req.body);
+    console.log(req.body.configurationData.config);
 
     //if (req.body && req.body.lifecycle === 'PING' || signatureIsVerified(req)) {
     if (req.body && req.body.lifecycle === 'PING' || true) {
