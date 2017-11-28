@@ -26,7 +26,6 @@ router.get('/smartthings', (req, res, next) => {
 router.post('/smartthings', (req, res, next) => {
     console.log(req.headers);
     console.log(req.body);
-    console.log(req.body.configurationData.config);
 
     //if (req.body && req.body.lifecycle === 'PING' || signatureIsVerified(req)) {
     if (req.body && req.body.lifecycle === 'PING' || true) {
@@ -58,6 +57,8 @@ function handleRequest(req, res) {
     // handle all lifecycles from SmartThings
     const lifecycle = req.body.lifecycle;
     const phase = req.body.configurationData ? req.body.configurationData.phase : null;
+
+    phase && console.log(phase.config);
 
 
     if (lifecycle === 'PING') {
