@@ -31,6 +31,10 @@ router.post('/smartthings', (req, res, next) => {
     console.log('BODYYYYYYYYYYY');
     console.log(req.body);
 
+    console.log('REQ QUERRYYY');
+    console.log(req.query);
+    console.log(req.query.error);
+
     if (req.body && req.body.lifecycle === 'PING' || signatureIsVerified(req)) {
         handleRequest(req, res);
     } else {
